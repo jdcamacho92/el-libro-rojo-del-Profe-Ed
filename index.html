@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Entrenar con Ed</title>
+  <style>
+    body {
+      background: radial-gradient(circle, #0a0a0a, #000);
+      color: #f2f2f2;
+      font-family: "Georgia", serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 500px;
+      padding: 20px;
+    }
+
+    img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 25px rgba(255,255,255,0.08);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    img.show {
+      opacity: 1;
+    }
+
+    .frase {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      min-height: 80px;
+    }
+
+    button {
+      background: transparent;
+      border: 1px solid #888;
+      color: #ddd;
+      padding: 12px 22px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      border-color: #fff;
+      color: #fff;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img id="imagen" src="" alt="Imagen motivacional">
+    <div class="frase" id="frase"></div>
+    <button onclick="entrenar()">Entrenar con Ed</button>
+  </div>
+
+  <script>
+    const frases = [
+      "Mujer, hay una determinación silenciosa en tu forma de entrenar.",
+      "Entrenas con una elegancia que no se improvisa, mujer.",
+      "Mujer, tu presencia transforma el ritmo del lugar.",
+      "Hay algo magnético en esa concentración tuya, mujer.",
+      "No es solo disciplina… es carácter, mujer.",
+      "Mujer, entrenas como quien sabe exactamente lo que vale.",
+      "Tu manera de moverte habla antes que cualquier palabra, mujer.",
+      "Mujer, esa seguridad no busca atención… la atrae.",
+      "Entrenas con una calma peligrosa, mujer.",
+      "Mujer, hay personas que entrenan… y otras que dejan impresión."
+    ];
+
+    function entrenar() {
+      // Frase random
+      const fraseRandom = frases[Math.floor(Math.random() * frases.length)];
+      document.getElementById("frase").innerText = fraseRandom;
+
+      // Imagen random (1.jpg a 10.jpg)
+      const img = document.getElementById("imagen");
+      const numero = Math.floor(Math.random() * 10) + 1;
+      img.classList.remove("show");
+      img.src = `fotos/${numero}.jpg`;
+
+      img.onload = () => {
+        img.classList.add("show");
+      };
+    }
+  </script>
+
+</body>
+</html>
